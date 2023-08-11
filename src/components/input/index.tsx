@@ -50,29 +50,66 @@ export function FormInput({
   }, []);
 
   return (
-    <div className="flex flex-col w-full mb-4">
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        width: '100%',
+        marginBottom: '0.25rem',
+      }}
+    >
       {text && (
-        <label className="mb-1" htmlFor={props.id || props.name}>
+        <label
+          style={{ marginBottom: '0.25rem' }}
+          htmlFor={props.id || props.name}
+        >
           {text}
         </label>
       )}
       <div
-        className={`flex items-center border-solid border bg-[#05091a] text-white border-b-[3px] px-4 outline-none rounded-sm duration-300 h-[50px] text-lg ${
-          (isError && 'border-red-500') ||
-          (focused && 'border-amber-400') ||
-          'border-transparent focus:border-bronze-500 border-b-bronze-500'
-        }`}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          borderStyle: 'solid',
+          borderWidth: 1,
+          backgroundColor: '#05091a',
+          color: 'white',
+          borderBottomWidth: '3px',
+          paddingLeft: '0.75rem',
+          paddingRight: '0.25rem',
+          outline: 'none',
+          borderRadius: '0.125rem',
+          transitionDuration: '300ms',
+          height: '50px',
+          fontSize: '1.125rem',
+          // Equivalente a text-lg no Tailwind
+          borderColor: isError
+            ? '#EF4444' // Cor vermelha
+            : focused
+            ? '#F59E0B' // Cor âmbar
+            : 'transparent', // Cor transparente
+          borderBottomColor: isError
+            ? '#B91C1C' // Cor vermelha para a borda inferior
+            : focused
+            ? '#C05621' // Cor âmbar para a borda inferior
+            : '#D97706', // Cor bronze para a borda inferior
+        }}
         onFocus={() => setFocused(true)}
         onBlur={onBlur}
       >
         {Icon && (
           <Icon
-            className={`mr-3 ${
-              (isError && 'text-red-500') ||
-              focused ||
-              (filled && 'text-amber-400') ||
-              'text-zinc-400'
-            } focus:text-amber-400`}
+            style={{
+              marginRight: '0.75rem', // 0.75rem é equivalente a 12 pixels
+              color: isError
+                ? '#EF4444' // Cor vermelha
+                : focused
+                ? 'inherit' // Mantém a cor atual se estiver focado
+                : filled
+                ? '#F59E0B' // Cor âmbar
+                : '#A1A1AA', // Cor zinc-400
+              focus: focused ? { color: '#F59E0B' } : {}, // Cor âmbar quando focado
+            }}
           />
         )}
         {props.mask ? (
@@ -82,7 +119,15 @@ export function FormInput({
             mask={props.mask}
             id={props.id || props.name}
             ref={inputMaskRef}
-            className="flex-1 bg-transparent border-0 w-full h-full text-base outline-none"
+            style={{
+              flex: '1',
+              backgroundColor: 'transparent',
+              borderWidth: '0',
+              width: '100%',
+              height: '100%',
+              fontSize: '1rem', // Equivalente a text-base no Tailwind
+              outline: 'none',
+            }}
           />
         ) : (
           <input
@@ -91,13 +136,28 @@ export function FormInput({
             {...props}
             {...inputProps}
             ref={inputRef}
-            className="flex-1 bg-transparent border-0 w-full h-full text-base outline-none"
+            style={{
+              flex: '1',
+              backgroundColor: 'transparent',
+              borderWidth: '0',
+              width: '100%',
+              height: '100%',
+              fontSize: '1rem', // Equivalente a text-base no Tailwind
+              outline: 'none',
+            }}
           />
         )}
 
         {meta.touched && meta.error && (
-          <Tooltip title={meta.error.toString()} className="h-5 ml-4">
-            <FiAlertCircle color="#ff5252" size={20} className="m-0" />
+          <Tooltip
+            title={meta.error.toString()}
+            style={{
+              height: '1.25rem', // 1.25rem é equivalente a 20 pixels
+              marginLeft: '1rem', // 1rem é equivalente a 16 pixels
+              postion: 'relative',
+            }}
+          >
+            <FiAlertCircle color="#ff5252" size={20} style={{ margin: 0 }} />
           </Tooltip>
         )}
 

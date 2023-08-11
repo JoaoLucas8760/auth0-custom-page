@@ -8,6 +8,7 @@
 
 .sunize-scrollbar::-webkit-scrollbar-thumb {
   background: #c27c2c;
+  border-radius: 7px;
 }
 
 .sunize-scrollbar::-webkit-scrollbar-track {
@@ -15,5 +16,5 @@
 }
 
 .auth-scrollbar ::-webkit-scrollbar {
-  @apply w-2;
+  width: 0.5rem;
 }

@@ -7,7 +7,7 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { FormComponent } from './FormComponent';
+import { LoginForm } from './LoginForm';
 import { WebAuthAlert } from './WebAuthAlert';
 import { useWebAuth } from './WebAuthProvider';
 import { FormInput } from './input';
@@ -64,7 +64,8 @@ export const SignIn = ({ email, setEmail }: Props): JSX.Element => {
         </Link>
       </Box>
       <WebAuthAlert sx={{ mt: 3 }} />
-      <FormComponent style={{ marginTop: '1rem' }} />
+
+      <LoginForm style={{ marginTop: '1rem' }} />
 
       <Link
         component="button"

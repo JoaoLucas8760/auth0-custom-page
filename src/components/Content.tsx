@@ -13,13 +13,37 @@ export const Content = (): JSX.Element => {
     <div style={{ display: 'flex', height: '100vh' }}>
       <Card
         style={{
-          maxWidth: '30rem',
+          maxWidth: '500px',
           zIndex: 100,
-          minWidth: '30rem',
+          // minWidth: '30rem',
           overflow: 'auto',
+          width: '100%',
+          paddingBottom: '10rem',
+          backgroundImage:
+            'url(https://sso.sunize.com.br/images/bg-form-pattern.png)',
+          backgroundBlendMode: 'difference',
+          backgroundColor: '#0f1c4d66',
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          // Largura da barra de rolagem (pode ser 'thin', 'auto' ou 'none')
         }}
-        className="sunize-scrollbar"
-        sx={{ p: { xs: 2, md: 7 }, overflow: 'auto', maxHeight: '100vh' }}
+        // className="sunize-scrollbar"
+        sx={{
+          p: { xs: 2, md: 7 },
+          overflow: 'auto',
+          maxHeight: '100vh',
+
+          '&::-webkit-scrollbar': {
+            width: '7px',
+          },
+          '&::-webkit-scrollbar-thumb': {
+            background: '#c27c2c', // Cor do polegar da scrollbar
+            borderRadius: 7,
+          },
+          '&::-webkit-scrollbar-track': {
+            background: '#1f1f2b', // Cor da trilha da scrollbar
+          },
+        }}
         variant="outlined"
       >
         {mode === 'signUp' ? (
@@ -33,6 +57,17 @@ export const Content = (): JSX.Element => {
             )}
           </>
         )}
+
+        <footer style={{ marginTop: '2rem' }}>
+          <span
+            style={{ fontSize: '0.7rem', opacity: 0.6, lineHeight: '0.5rem' }}
+          >
+            Termos de uso - Políticas de privacidade
+          </span>
+          <p style={{ fontSize: '0.9rem', opacity: 0.9, lineHeight: '1rem' }}>
+            Sunize 2023 - Todos os Direitors Reservados
+          </p>
+        </footer>
       </Card>
       <img
         alt="Imagem"
