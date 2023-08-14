@@ -101,7 +101,7 @@ export default function RegisterForm({ style }: any) {
             id="email"
           />
 
-          <FormInput
+          {/* <FormInput
             name="identity"
             placeholder="Digite o numero do CPF ou CNPJ"
             icon={RiPassportLine}
@@ -118,7 +118,7 @@ export default function RegisterForm({ style }: any) {
             text="Telefone *"
             id="phone"
             mask="+55 (99) 99999-9999"
-          />
+          /> */}
 
           <FormInput
             name="password"

@@ -13,7 +13,7 @@ export const PasswordRecovery = ({ email, setEmail }: Props): JSX.Element => {
 
   return (
     <>
-      <Typography variant="h5">{'Password Recovery'}</Typography>
+      <Typography variant="h5">{'Recuperar senha'}</Typography>
       <Typography color="text.secondary" variant="body2">
         {
           'Digite o endereço de email com o qual você se cadastrou abaixo. Um email será enviado contendo um link para redefinir sua senha.'

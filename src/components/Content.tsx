@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card } from '@mui/material';
 import { PasswordRecovery } from './PasswordRecovery';
 import { SignIn } from './SignIn';
@@ -8,6 +8,27 @@ import { useWebAuth } from './WebAuthProvider';
 export const Content = (): JSX.Element => {
   const { mode } = useWebAuth();
   const [email, setEmail] = useState('');
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener('resize', () => {
+      if (window.innerWidth < 768) {
+        setIsMobile(true);
+      } else {
+        setIsMobile(false);
+      }
+    });
+
+    return () => {
+      window.removeEventListener('resize', () => {
+        if (window.innerWidth < 768) {
+          setIsMobile(true);
+        } else {
+          setIsMobile(false);
+        }
+      });
+    };
+  }, []);
 
   return (
     <div style={{ display: 'flex', height: '100vh' }}>
@@ -77,6 +98,7 @@ export const Content = (): JSX.Element => {
           objectFit: 'cover',
           objectPosition: 'center',
           overflow: 'hidden',
+          display: isMobile ? 'none' : 'flex',
         }}
       />
     </div>

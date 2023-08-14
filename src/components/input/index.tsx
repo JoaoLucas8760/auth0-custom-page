@@ -1,12 +1,11 @@
 import { InputHTMLAttributes, useCallback, useRef, useState } from 'react';
 import React from 'react';
+import { Box, InputBase } from '@mui/material';
 import { useField } from 'formik';
 import { FiAlertCircle } from 'react-icons/fi';
 import InputMask, { ReactInputMask } from 'react-input-mask';
 import { HandlePasswordButton } from '../handle-password-button';
 import { Tooltip } from '../tooltip';
-
-('use client');
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   text?: string;
@@ -50,7 +49,8 @@ export function FormInput({
   }, []);
 
   return (
-    <div
+    <Box
+      component={'div'}
       style={{
         display: 'flex',
         flexDirection: 'column',
@@ -131,6 +131,7 @@ export function FormInput({
           />
         ) : (
           <input
+            className="input"
             id={props.id || props.name}
             type={typeInput}
             {...props}
@@ -145,6 +146,7 @@ export function FormInput({
               fontSize: '1rem', // Equivalente a text-base no Tailwind
               outline: 'none',
             }}
+            autoComplete="off"
           />
         )}
 
@@ -169,6 +171,6 @@ export function FormInput({
           />
         )}
       </div>
-    </div>
+    </Box>
   );
 }
